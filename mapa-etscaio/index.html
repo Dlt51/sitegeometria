@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mapa Acessível | Estácio Niterói</title>
+
+    <meta
+        name="description"
+        content="Projeto acadêmico de Geometria Analítica e Álgebra Linear para análise da acessibilidade na Estácio Niterói."
+    >
+
+    <meta name="theme-color" content="#102a43">
+
+    <link rel="stylesheet" href="style.css">
+
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+</head>
+
+<body>
+
+    <header class="cabecalho" id="inicio">
+        <div class="cabecalho-conteudo">
+            <a href="#inicio" class="identidade" aria-label="Mapa Acessível - início">
+                <span class="identidade-icone" aria-hidden="true">MA</span>
+
+                <span class="identidade-texto">
+                    <strong>Mapa Acessível</strong>
+                    <small>Estácio Niterói</small>
+                </span>
+            </a>
+
+            <span class="etiqueta-projeto">
+                PROJETO ACADÊMICO
+            </span>
+        </div>
+
+        <div class="apresentacao">
+            <span class="sobretitulo">
+                GEOMETRIA ANALÍTICA E ÁLGEBRA LINEAR
+            </span>
+
+            <h1>
+                Acessibilidade começa com
+                <span>uma nova perspectiva.</span>
+            </h1>
+
+            <p>
+                Mapeamento dos acessos, identificação de possíveis barreiras
+                e análise matemática dos percursos da Estácio Niterói.
+            </p>
+
+            <a href="#secao-mapa" class="botao-destaque">
+                Explorar o mapa
+                <span aria-hidden="true">↓</span>
+            </a>
+        </div>
+    </header>
+
+    <nav class="navegacao" aria-label="Navegação principal">
+        <div class="navegacao-conteudo">
+            <a href="#secao-mapa">Mapa</a>
+            <a href="#secao-calculo">Cálculos</a>
+            <a href="#registro-fotografico">Registros fotográficos</a>
+            <a href="#galeria-acessibilidade">Galeria do polo</a>
+            <a href="#secao-barreiras">Barreiras</a>
+            <a href="#acessibilidade-polo">No polo</a>
+            <a href="#secao-solucoes">Propostas de melhoria</a>
+            <a href="#fundamentacao">Geometria</a>
+        </div>
+    </nav>
+
+    <main class="conteudo">
+
+        <section class="introducao">
+            <div class="introducao-texto">
+                <span class="sobretitulo">NOSSO OBJETIVO</span>
+
+                <h2>Um espaço mais acessível para todos</h2>
+
+                <p>
+                    Este projeto investiga as condições de acesso da
+                    instituição por meio de observações, registros
+                    fotográficos, coordenadas geográficas e cálculos
+                    matemáticos.
+                </p>
+
+                <p>
+                    O objetivo é identificar possíveis dificuldades
+                    de circulação e organizar informações que contribuam
+                    para uma análise mais acessível e inclusiva.
+                </p>
+            </div>
+
+            <div class="introducao-selo" aria-hidden="true">
+                <span class="selo-simbolo">⌖</span>
+                <strong>MAPA</strong>
+                <span>ACESSÍVEL</span>
+            </div>
+        </section>
+
+        <section class="secao-resumo">
+            <div class="cabecalho-secao">
+                <div>
+                    <span class="sobretitulo">LEVANTAMENTO PRELIMINAR</span>
+                    <h2>Os percursos analisados</h2>
+                </div>
+
+                <span class="etiqueta-pendente">
+                    Dados em avaliação
+                </span>
+            </div>
+
+            <div class="grade-resumo">
+                <article class="cartao-percurso cartao-escadaria">
+                    <div class="cartao-icone" aria-hidden="true">↗</div>
+
+                    <div class="cartao-conteudo">
+                        <span class="cartao-categoria">PERCURSO 01</span>
+                        <h3>Escadaria</h3>
+
+                        <p>
+                            Acesso com degraus que pode representar uma
+                            barreira para pessoas com mobilidade reduzida.
+                        </p>
+
+                        <div class="cartao-medida">
+                            <strong>34,78</strong>
+                            <span>metros</span>
+                        </div>
+
+                        <span class="cartao-rodape">
+                            Comprimento informado do percurso
+                        </span>
+                    </div>
+                </article>
+
+                <article class="cartao-percurso cartao-rampa">
+                    <div class="cartao-icone" aria-hidden="true">⇧</div>
+
+                    <div class="cartao-conteudo">
+                        <span class="cartao-categoria">PERCURSO 02</span>
+                        <h3>Rampa</h3>
+
+                        <p>
+                            Percurso alternativo cuja inclinação e
+                            condições de circulação precisam ser avaliadas.
+                        </p>
+
+                        <div class="cartao-medida">
+                            <strong>76,62</strong>
+                            <span>metros</span>
+                        </div>
+
+                        <span class="cartao-rodape">
+                            Comprimento informado do percurso
+                        </span>
+                    </div>
+                </article>
+            </div>
+
+            <p class="nota-resumo">
+                Os valores representam os comprimentos informados dos
+                percursos, e não necessariamente a distância em linha reta
+                entre seus pontos inicial e final.
+            </p>
+        </section>
+
+        <section id="secao-mapa" class="secao-mapa">
+            <div class="cabecalho-secao">
+                <div>
+                    <span class="sobretitulo">EXPLORAÇÃO GEOGRÁFICA</span>
+                    <h2>Mapa dos acessos</h2>
+                </div>
+
+                <span class="indicador-mapa">
+                    <span class="indicador-ponto"></span>
+                    Mapa interativo
+                </span>
+            </div>
+
+            <p class="texto-secao">
+                Explore a região, consulte os pontos registrados e utilize
+                as ferramentas do projeto para investigar as distâncias
+                entre os locais identificados.
+            </p>
+
+            <div
+                id="mapa"
+                role="application"
+                aria-label="Mapa interativo dos acessos da Estácio Niterói"
+            ></div>
+
+            <div class="legenda-mapa">
+                <div class="legenda-item">
+                    <span class="legenda-marcador legenda-azul"></span>
+                    <span>Pontos de acesso</span>
+                </div>
+
+                <div class="legenda-item">
+                    <span class="legenda-marcador legenda-roxo"></span>
+                    <span>Representação geométrica</span>
+                </div>
+            </div>
+
+            <p class="observacao-mapa">
+                A representação dos pontos e das linhas depende das
+                coordenadas disponíveis. Uma linha entre dois pontos
+                representa um segmento geométrico, não necessariamente
+                um caminho real de circulação.
+            </p>
+        </section>
+
+        <section id="secao-calculo" class="secao-calculo">
+            <div class="cabecalho-secao">
+                <div>
+                    <span class="sobretitulo">GEOMETRIA NA PRÁTICA</span>
+                    <h2>Calcular distância entre pontos</h2>
+                </div>
+
+                <span class="icone-matematica" aria-hidden="true">∑</span>
+            </div>
+
+            <p class="texto-secao">
+                Selecione dois pontos cadastrados para calcular a distância
+                aproximada em linha reta entre suas coordenadas geográficas.
+            </p>
+
+            <div class="controles">
+                <div class="campo">
+                    <label for="origem">Ponto de origem</label>
+
+                    <select id="origem">
+                        <option value="">Selecione a origem</option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label for="destino">Ponto de destino</label>
+
+                    <select id="destino">
+                        <option value="">Selecione o destino</option>
+                    </select>
+                </div>
+
+                <button id="buscarRota" type="button" class="botao-principal">
+                    Calcular distância
+                    <span aria-hidden="true">→</span>
+                </button>
+            </div>
+
+            <div id="resultado" aria-live="polite">
+                Selecione a origem e o destino para realizar o cálculo.
+            </div>
+
+            <div class="aviso-calculo">
+                <span class="aviso-icone" aria-hidden="true">i</span>
+
+                <p>
+                    <strong>Importante:</strong>
+                    a distância calculada entre coordenadas é diferente
+                    do comprimento real de um trajeto, que pode incluir
+                    curvas, desvios e obstáculos.
+                </p>
+            </div>
+        </section>
+
+        <section id="registro-fotografico" class="secao-fotografica">
+            <div class="cabecalho-secao">
+                <div>
+                    <span class="sobretitulo">EVIDÊNCIAS DO LEVANTAMENTO</span>
+                    <h2>Registro fotográfico</h2>
+                </div>
+            </div>
+
+            <p class="texto-secao">
+                As fotografias documentam os acessos analisados e ajudam
+                a contextualizar as possíveis barreiras encontradas.
+            </p>
+
+            <div class="galeria-fotos">
+                <article class="foto-acessibilidade">
+                    <div class="foto-container">
+                        <img
+                            src="imagens/escadaria.png"
+                            alt="Escadaria de acesso analisada no projeto Mapa Acessível"
+                            loading="lazy"
+                        >
+
+                        <span class="foto-etiqueta">PERCURSO 01</span>
+                    </div>
+
+                    <div class="descricao-foto">
+                        <span class="distancia-foto">34,78 m</span>
+
+                        <h3>Escadaria de acesso</h3>
+
+                        <p>
+                            A presença de degraus pode representar uma
+                            barreira para cadeirantes e outras pessoas
+                            com mobilidade reduzida.
+                        </p>
+
+                        <p>
+                            É necessário verificar a existência de uma
+                            rota alternativa acessível, segura e adequada
+                            às necessidades dos usuários.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="foto-acessibilidade">
+                    <div class="foto-container">
+                        <img
+                            src="imagens/rampa.png"
+                            alt="Rampa de acesso analisada no projeto Mapa Acessível"
+                            loading="lazy"
+                        >
+
+                        <span class="foto-etiqueta">PERCURSO 02</span>
+                    </div>
+
+                    <div class="descricao-foto">
+                        <span class="distancia-foto">76,62 m</span>
+
+                        <h3>Rampa de acesso</h3>
+
+                        <p>
+                            A rampa apresenta um percurso de extensão
+                            considerável. Sua inclinação e suas condições
+                            de circulação precisam ser avaliadas.
+                        </p>
+
+                        <p>
+                            A avaliação deve considerar a inclinação,
+                            a largura, as condições do piso, a presença
+                            de patamares e a segurança durante o uso.
+                        </p>
+
+                        <div class="aviso-medicao">
+                            <strong>Medida pendente</strong>
+
+                            <p>
+                                A inclinação exata ainda não foi calculada,
+                                pois faltam as medidas do desnível vertical
+                                e da projeção horizontal.
+                            </p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="nota-metodologica">
+                <strong>Nota metodológica</strong>
+
+                <p>
+                    As distâncias apresentadas correspondem aos
+                    comprimentos informados dos percursos. Elas não
+                    devem ser confundidas com a distância em linha reta
+                    calculada entre coordenadas geográficas.
+                </p>
+            </div>
+        </section>
+
+        <section id="secao-barreiras">
+            <div class="cabecalho-secao">
+                <div>
+                    <span class="sobretitulo">PONTOS DE ATENÇÃO</span>
+                    <h2>Barreiras de acessibilidade</h2>
+                </div>
+
+                <span class="icone-barreira" aria-hidden="true">!</span>
+            </div>
+
+            <p class="texto-secao">
+                Esta seção reúne as possíveis barreiras identificadas
+                durante o levantamento inicial. As informações poderão
+                ser complementadas após novas observações presenciais.
+            </p>
+
+            <div id="listaObstaculos">
+                <p>Carregando informações sobre as barreiras identificadas...</p>
+            </div>
+        </section>
+
+        <section id="acessibilidade-polo" class="secao-polo">
+            <div class="cabecalho-secao">
+                <div>
+                    <span class="sobretitulo">ACESSIBILIDADE APÓS A CHEGADA</span>
+                    <h2>Recursos disponíveis no polo</h2>
+                </div>
+
+                <span class="icone-solucao" aria-hidden="true">✓</span>
+            </div>
+
+            <p class="texto-secao">
+                O levantamento diferencia o trajeto até a instituição das
+                condições encontradas depois da chegada. Embora existam
+                pontos de atenção no acesso externo, o polo conta com
+                recursos de acessibilidade para apoiar a circulação e o
+                atendimento de seus estudantes e visitantes.
+            </p>
+
+            <div class="destaque-polo">
+                <strong>Conclusão parcial do grupo</strong>
+
+                <p>
+                    A principal dificuldade observada está no percurso de
+                    chegada ao polo. Após a entrada, a acessibilidade deve
+                    ser registrada e valorizada como parte das condições de
+                    acolhimento oferecidas pela instituição.
+                </p>
+            </div>
+
+            <div class="grade-recursos-polo">
+                <article class="recurso-polo">
+                    <span aria-hidden="true">↔</span>
+                    <h3>Circulação interna</h3>
+                    <p>Registre aqui como são os corredores, acessos e áreas de circulação do polo.</p>
+                </article>
+
+                <article class="recurso-polo">
+                    <span aria-hidden="true">♿</span>
+                    <h3>Apoio à mobilidade</h3>
+                    <p>Descreva os recursos observados que facilitam a entrada e o deslocamento dentro da unidade.</p>
+                </article>
+
+                <article class="recurso-polo">
+                    <span aria-hidden="true">i</span>
+                    <h3>Atendimento e orientação</h3>
+                    <p>Inclua informações sobre recepção, sinalização e apoio oferecido aos usuários.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="galeria-acessibilidade" class="secao-galeria-completa">
+            <div class="cabecalho-secao">
+                <div>
+                    <span class="sobretitulo">REGISTRO FOTOGRÁFICO COMPLETO</span>
+                    <h2>Acessibilidade, parte por parte</h2>
+                </div>
+
+                <span class="icone-solucao" aria-hidden="true">▣</span>
+            </div>
+
+            <p class="texto-secao">
+                As imagens foram organizadas conforme cada etapa do percurso:
+                chegada ao polo, entrada, circulação interna e recursos de apoio.
+            </p>
+
+            <div class="bloco-galeria">
+                <h3>1. Trajeto externo até a instituição</h3>
+                <p>Registros do entorno e da aproximação à entrada do polo.</p>
+
+                <div class="grade-galeria-completa">
+                    <figure>
+                        <img src="imagens/acesso-externo-01.jpg" alt="Rua de acesso à entrada da Estácio à noite" loading="lazy">
+                        <figcaption>Via de chegada à instituição.</figcaption>
+                    </figure>
+
+                    <figure>
+                        <img src="imagens/acesso-externo-02.jpg" alt="Trecho externo do entorno da instituição" loading="lazy">
+                        <figcaption>Entorno e percurso externo.</figcaption>
+                    </figure>
+
+                    <figure>
+                        <img src="imagens/acesso-externo-03.jpg" alt="Ladeira do trajeto externo próximo à instituição" loading="lazy">
+                        <figcaption>Inclinação observada no trajeto.</figcaption>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="bloco-galeria">
+                <h3>2. Chegada, entrada e estacionamento</h3>
+                <p>Recursos observados no acesso imediato ao polo.</p>
+
+                <div class="grade-galeria-completa">
+                    <figure>
+                        <img src="imagens/entrada-rampa.jpg" alt="Rampa de entrada da Estácio Niterói" loading="lazy">
+                        <figcaption>Rampa de acesso na entrada.</figcaption>
+                    </figure>
+
+                    <figure>
+                        <img src="imagens/estacionamento-acessivel.jpg" alt="Vaga reservada e sinalização de acessibilidade" loading="lazy">
+                        <figcaption>Vaga reservada para pessoa com deficiência.</figcaption>
+                    </figure>
+
+                    <figure>
+                        <img src="imagens/rampa-bloco-a.jpg" alt="Rampa de acesso ao Bloco A" loading="lazy">
+                        <figcaption>Rampa de acesso ao Bloco A.</figcaption>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="bloco-galeria">
+                <h3>3. Rampas e circulação interna</h3>
+                <p>Rotas internas com rampas, corrimãos e piso tátil.</p>
+
+                <div class="grade-galeria-completa">
+                    <figure>
+                        <img src="imagens/rampa-interna-01.jpg" alt="Rampa interna com corrimãos e piso tátil" loading="lazy">
+                        <figcaption>Rampa interna próxima ao Bloco B.</figcaption>
+                    </figure>
+
+                    <figure>
+                        <img src="imagens/rampa-interna-02.jpg" alt="Rampa interna sinalizada no polo" loading="lazy">
+                        <figcaption>Rampa e rota de circulação.</figcaption>
+                    </figure>
+
+                    <figure>
+                        <img src="imagens/rampa-interna-03.jpg" alt="Rampa interna com sinalização tátil" loading="lazy">
+                        <figcaption>Rota acessível entre os ambientes.</figcaption>
+                    </figure>
+
+                    <figure>
+                        <img src="imagens/rampa-interna-04.jpg" alt="Rampa próxima à área de convivência" loading="lazy">
+                        <figcaption>Rampa de ligação com a área de convivência.</figcaption>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="bloco-galeria">
+                <h3>4. Elevadores e orientação tátil</h3>
+                <p>Elevadores acompanhados por piso tátil e sinalização de localização.</p>
+
+                <div class="grade-galeria-completa">
+                    <figure>
+                        <img src="imagens/elevador-01.jpg" alt="Elevador com piso tátil em frente à entrada" loading="lazy">
+                        <figcaption>Elevador com piso tátil de orientação.</figcaption>
+                    </figure>
+
+                    <figure>
+                        <img src="imagens/elevador-02.jpg" alt="Elevador próximo à secretaria" loading="lazy">
+                        <figcaption>Elevador de acesso à secretaria.</figcaption>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="bloco-galeria">
+                <h3>5. Ambientes e serviços acessíveis</h3>
+                <p>Registros de espaços de uso acadêmico e de apoio.</p>
+
+                <div class="grade-galeria-completa">
+                    <figure>
+                        <img src="imagens/biblioteca.jpg" alt="Acesso à biblioteca com rampa e piso tátil" loading="lazy">
+                        <figcaption>Biblioteca com rota de acesso sinalizada.</figcaption>
+                    </figure>
+
+                    <figure>
+                        <img src="imagens/banheiro-acessivel.jpg" alt="Porta de banheiro acessível com sinalização" loading="lazy">
+                        <figcaption>Banheiro identificado como acessível.</figcaption>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="bloco-galeria">
+                <h3>6. Escadarias e rotas alternativas</h3>
+                <p>As escadarias possuem corrimãos, sinalização visual e piso tátil; a análise deve considerar também as rotas alternativas acessíveis.</p>
+
+                <div class="grade-galeria-completa">
+                    <figure>
+                        <img src="imagens/escadaria-01.jpg" alt="Escadaria coberta com corrimãos e piso tátil" loading="lazy">
+                        <figcaption>Escadaria coberta com sinalização.</figcaption>
+                    </figure>
+
+                    <figure>
+                        <img src="imagens/escadaria-02.jpg" alt="Escadaria com corrimãos laterais" loading="lazy">
+                        <figcaption>Escadaria com corrimãos laterais.</figcaption>
+                    </figure>
+
+                    <figure>
+                        <img src="imagens/escadaria-03.jpg" alt="Escadaria interna com corrimãos" loading="lazy">
+                        <figcaption>Escadaria em área interna do polo.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <section id="secao-solucoes">
+            <div class="cabecalho-secao">
+                <div>
+                    <span class="sobretitulo">CAMINHOS PARA A INCLUSÃO</span>
+                    <h2>Propostas de melhoria</h2>
+                </div>
+
+                <span class="icone-solucao" aria-hidden="true">✓</span>
+            </div>
+
+            <p class="texto-secao">
+                As propostas buscam contribuir para um ambiente mais
+                acessível, seguro e inclusivo.
+            </p>
+
+            <div id="listaSolucoes">
+                <p>Carregando propostas de melhoria...</p>
+            </div>
+        </section>
+
+        <section id="fundamentacao" class="secao-fundamentacao">
+            <div class="cabecalho-secao">
+                <div>
+                    <span class="sobretitulo">BASE MATEMÁTICA DO PROJETO</span>
+                    <h2>Geometria Analítica e Álgebra Linear</h2>
+                </div>
+
+                <span class="icone-matematica" aria-hidden="true">∑</span>
+            </div>
+
+            <p class="texto-secao">
+                Os conceitos matemáticos são utilizados para representar
+                os acessos, analisar deslocamentos e comparar percursos.
+            </p>
+
+            <div class="grade-fundamentacao">
+                <article class="fundamentacao-item">
+                    <span class="fundamentacao-numero">01</span>
+                    <h3>Coordenadas geográficas</h3>
+
+                    <p>
+                        Latitude e longitude permitem representar os pontos
+                        de acesso no mapa e localizar os locais analisados.
+                    </p>
+                </article>
+
+                <article class="fundamentacao-item">
+                    <span class="fundamentacao-numero">02</span>
+                    <h3>Distância entre pontos</h3>
+
+                    <p>
+                        A distância em linha reta ajuda a estimar a
+                        separação espacial entre dois locais.
+                    </p>
+
+                    <p>
+                        Ela não representa necessariamente o comprimento
+                        real do percurso.
+                    </p>
+                </article>
+
+                <article class="fundamentacao-item">
+                    <span class="fundamentacao-numero">03</span>
+                    <h3>Vetores e deslocamentos</h3>
+
+                    <p>
+                        Os vetores representam deslocamentos e permitem
+                        analisar a diferença de posição entre pontos,
+                        considerando componentes nas direções horizontal
+                        e vertical do plano local.
+                    </p>
+                </article>
+
+                <article class="fundamentacao-item">
+                    <span class="fundamentacao-numero">04</span>
+                    <h3>Inclinação da rampa</h3>
+
+                    <p>
+                        Para determinar o percentual de inclinação,
+                        é necessário conhecer o desnível vertical e
+                        a projeção horizontal do trecho analisado.
+                    </p>
+
+                    <div class="formula-matematica">
+                        Inclinação (%) =
+                        <span>(desnível vertical ÷ projeção horizontal) × 100</span>
+                    </div>
+
+                    <div class="aviso-medicao">
+                        <strong>Dados pendentes</strong>
+
+                        <p>
+                            A inclinação numérica não será informada
+                            até que as medidas necessárias sejam obtidas.
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="rodape">
+        <div class="rodape-conteudo">
+            <div class="rodape-identidade">
+                <strong>Mapa Acessível</strong>
+                <span>Estácio Niterói</span>
+            </div>
+
+            <div class="rodape-informacoes">
+                <p>Projeto acadêmico de Geometria Analítica e Álgebra Linear.</p>
+                <p>Dados preliminares sujeitos à confirmação presencial.</p>
+            </div>
+
+            <a href="#inicio" class="voltar-topo">
+                Voltar ao início ↑
+            </a>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
